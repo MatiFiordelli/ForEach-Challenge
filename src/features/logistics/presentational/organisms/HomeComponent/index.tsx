@@ -10,7 +10,9 @@ export default function HomeComponent() {
 			animate={"animate"}
 			exit={"exit"}
 		>
-			Home component
+			<p>WELCOME TO LOGISTICS APP</p> 
+			<p className="italic">The place where you can register the trips of employees and subsequently calculate the carbon footprint associated with those trips.</p>
+			<p className="text-xs">Take a look at the Menu</p>
 		</motion.section>
 	);
 }

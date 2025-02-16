@@ -4,9 +4,9 @@ export interface TransportMode {
     code: number;
 }
 
-/* export interface TransportModes {
+export interface TransportModes {
     transportModes: TransportMode[];
-} */
+}
 
 export interface SetIsLoggedInAction {
     type: string,

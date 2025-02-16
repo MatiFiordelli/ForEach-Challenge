@@ -63,22 +63,46 @@ export default function SessionFormElements({
 					/>
 
 					{!isLogin && (
-						<Input
-							id={"repeatPassword"}
-							type={"password"}
-							placeholder={"Repeat your password"}
-							title={"Repeat Password"}
-							isRequired={true}
-							value={repeatPassword}
-							onChangeHandler={(
-								e: React.ChangeEvent<HTMLInputElement>
-							) => setRepeatPassword(e.target.value)}
-							minLength={8}
-							maxLength={16}
-							pattern={
-								"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*+]).{8,16}$"
-							}
-						/>
+						<>
+							<Input
+								id={"repeatPassword"}
+								type={"password"}
+								placeholder={"Repeat your password"}
+								title={"Repeat Password"}
+								isRequired={true}
+								value={repeatPassword}
+								onChangeHandler={(
+									e: React.ChangeEvent<HTMLInputElement>
+								) => setRepeatPassword(e.target.value)}
+								minLength={8}
+								maxLength={16}
+								pattern={
+									"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*+]).{8,16}$"
+								}
+							/>
+
+							<Input
+								id={"name"}
+								type={"name"}
+								placeholder={"Enter your name"}
+								title={"Name"}
+								isRequired={true}
+								value={formData?.name}
+								onChangeHandler={(
+									e: React.ChangeEvent<HTMLInputElement>
+								) =>
+									dispatch(
+										setFormData({
+											...formData,
+											name: e.target.value,
+										})
+									)
+								}
+								maxLength={50}
+								minLength={2}
+								pattern={"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(?: [A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$"}
+							/>
+						</>
 					)}
 
 					<Button

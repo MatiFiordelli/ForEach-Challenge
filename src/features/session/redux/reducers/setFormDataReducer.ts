@@ -3,7 +3,8 @@ import { SETFORMDATA } from "../types";
 
 const initState = {
     email: "",
-	password: ""
+	password: "",
+    name: ""
 }
 
 export default function setFormDataReducer(state=initState, action: SetFormDataInterface) {
@@ -12,7 +13,8 @@ export default function setFormDataReducer(state=initState, action: SetFormDataI
             return {
                 ...state, 
                 email: action.payload.email, 
-                password: action.payload.password
+                password: action.payload.password,
+                name: action.payload.name
             }
         default:
             return state

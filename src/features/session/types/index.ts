@@ -8,7 +8,8 @@ export interface SessionProps {
 
 export interface EntriesDataType {
 	email: string,
-	password: string
+	password: string,
+	name?: string
 }
 
 export interface SessionFormElementsProps {

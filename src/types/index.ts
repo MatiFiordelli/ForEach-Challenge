@@ -26,3 +26,8 @@ export interface FormData {
     distance: string;
     roundTrip: string;
 }
+
+export interface TripRecord extends FormData{
+    _id?: string;
+    employeeName: string;
+}

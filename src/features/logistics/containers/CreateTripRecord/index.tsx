@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import CreateTripRecordComponent from "../../presentational/organisms/CreateTripRecordComponent";
-import { FormData } from "../../../../types";
+import CreateTripRecordComponent from "../../presentational/CreateTripRecordComponent";
+import { FormData, TransportMode, TripRecord } from "../../../../types";
 import { jwtDecode } from "jwt-decode";
 import endpoints from "../../../../utils/helpers/endpoints";
+import { getTransportModes } from "../../../../utils/getTransportModes";
 
 const initialFormData = {
 	startAddress: "",
@@ -14,7 +15,7 @@ const initialFormData = {
 };
 
 export default function CreateTripRecord() {
-	const [transportModes, setTransportModes] = useState(null);
+	const [transportModes, setTransportModes] = useState<TransportMode[] | null>(null);
 	const [formData, setFormData] = useState<FormData>(initialFormData);
 	const token = localStorage.getItem("token");
 	const [email, setEmail] = useState("");
@@ -36,25 +37,6 @@ export default function CreateTripRecord() {
 		}
 	};
 
-	const getTransportModes = () => {
-		fetch("http://localhost:4001/api/getTransportModes")
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error("Network response was not ok");
-				}
-				return res.json();
-			})
-			.then((data) => {
-				setTransportModes(data.transportModes[0].transportModes);
-			})
-			.catch((error) => {
-				console.error(
-					"There was a problem with the fetch operation:",
-					error
-				);
-			});
-	};
-
 	const handleChange = (
 		e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
@@ -69,16 +51,15 @@ export default function CreateTripRecord() {
 
 	const createTripRecordHandler = async (e: FormEvent) => {
 		e.preventDefault();
+		
 		try {
 			const response = await fetch(
-				`${endpoints["logistics-microservice"]}`,
+				`${endpoints["logistics-microservice"]}/api/trip-records`,
 				{
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: `Bearer ${localStorage.getItem(
-							"token"
-						)}`,
+						"Authorization": `Bearer ${token}`,
 					},
 					body: JSON.stringify({
 						email: email,
@@ -102,7 +83,7 @@ export default function CreateTripRecord() {
 	};
 
 	useEffect(() => {
-		getTransportModes();
+		getTransportModes(setTransportModes);
 		getNameFromToken();
 	}, []);
 

@@ -1,8 +1,8 @@
-import { Button, Form, Input } from "../../../../resources/FormElements";
-import { FormData, TransportMode } from "../../../../../types";
+import { Button, Form, Input } from "../../../resources/FormElements";
+import { FormData, TransportMode } from "../../../../types";
 import { ChangeEvent, FormEvent } from "react";
 
-export default function CreateTripRecord({
+export default function CreateTripRecordComponent({
 	transportModes,
     handleChange,
     createTripRecordHandler,
@@ -17,7 +17,7 @@ export default function CreateTripRecord({
 }) {
 
 	return (
-		<section className="text-center w-[50%] flex flex-col justify-center m-auto gap-5">
+		<section className="text-center w-[50%] flex flex-col justify-center m-auto gap-3 mb-3">
 			<p>Create Trip Record</p>
 			<Form handleSubmit={(e) => createTripRecordHandler(e)}>
 				<Input

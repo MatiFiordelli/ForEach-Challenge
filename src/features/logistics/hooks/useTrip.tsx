@@ -3,6 +3,7 @@ import { TransportMode, TripRecord } from "../../../types";
 import { getTransportModes } from "../../../utils/getTransportModes";
 import { jwtDecode } from "jwt-decode";
 import { deleteTripRecord } from "../services";
+import endpoints from "../../../utils/helpers/endpoints";
 
 export default function useTrip(
 	crudOperation: string = "",
@@ -25,8 +26,7 @@ export default function useTrip(
 	console.log(isModifyTripRecordsFormComponentVisible, employeeName)
 
 	const getTrips = () => {
-		const endpoint = `http://localhost:4001/api/trip-records`;
-		fetch(endpoint, {
+		fetch(`${endpoints['logistics-microservice']}/api/trip-records`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

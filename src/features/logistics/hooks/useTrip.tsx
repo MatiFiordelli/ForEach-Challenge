@@ -22,6 +22,8 @@ export default function useTrip(
 		setSelectedId(id);
 	};
 
+	console.log(isModifyTripRecordsFormComponentVisible, employeeName)
+
 	const getTrips = () => {
 		const endpoint = `http://localhost:4001/api/trip-records`;
 		fetch(endpoint, {

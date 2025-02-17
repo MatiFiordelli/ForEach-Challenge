@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import CreateTripRecordComponent from "../../presentational/CreateTripRecordComponent";
-import { FormData, TransportMode, TripRecord } from "../../../../types";
+import { FormData, TransportMode } from "../../../../types";
 import { jwtDecode } from "jwt-decode";
 import endpoints from "../../../../utils/helpers/endpoints";
 import { getTransportModes } from "../../../../utils/getTransportModes";

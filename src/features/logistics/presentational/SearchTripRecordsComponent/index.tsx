@@ -1,4 +1,3 @@
-import { data } from "react-router";
 import { TransportMode, TripRecord } from "../../../../types";
 import { Button, Input } from "../../../resources/FormElements";
 import TableTrips from "../../../resources/TableTrips";

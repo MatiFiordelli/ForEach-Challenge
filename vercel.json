@@ -1,0 +1,32 @@
+{
+	"routes": [
+		{
+			"src": "/signup",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/login",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/create-trip-record",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/modify-trip-record",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/delete-trip-record",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/show-trip-records",
+			"dest": "/index.html"
+		},
+		{
+			"src": "/search-trip-records",
+			"dest": "/index.html"
+		}
+	]
+}
